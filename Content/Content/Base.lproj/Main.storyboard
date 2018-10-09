@@ -237,7 +237,9 @@
                     <navigationItem key="navigationItem" id="gta-A4-dXz"/>
                     <connections>
                         <outlet property="loginBtn" destination="Ndl-Qm-fTi" id="MUB-jJ-YuY"/>
+                        <outlet property="password" destination="eZo-vx-4VF" id="UG2-yR-ui8"/>
                         <outlet property="registBtn" destination="adH-QE-qkh" id="gTG-Hv-1XQ"/>
+                        <outlet property="username" destination="HcO-QS-OdP" id="EPy-Fs-M8o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aVW-lK-4c1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import SVProgressHUD
+import Alamofire
 
 class LoginController: UIViewController {
 
     @IBOutlet weak var registBtn: UIButton!
     @IBOutlet weak var loginBtn: UIButton!
+    
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +40,20 @@ class LoginController: UIViewController {
         
         view.endEditing(true)
         
+        if (username.text?.isEmpty)! || (password.text?.isEmpty)! {
+            SVTool.showError(info: "请输入完整")
+            return
+        }
         
-        
+        let m_parameters: Parameters = [
+            "username": username.text!,
+            "password": password.text!
+        ]
+        NetTool.Get(url: "http://localhost:8080/api/list.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                print(json["name"].stringValue)
+            }
+        }
     }
     
 

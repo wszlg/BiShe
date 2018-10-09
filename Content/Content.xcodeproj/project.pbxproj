@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		50E2CD00B0E32E9350038770 /* Pods_Content.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0442D913F1E669C54868B9 /* Pods_Content.framework */; };
+		715C9EF5216C56DF00D1EC9E /* SVTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C9EF4216C56DF00D1EC9E /* SVTool.swift */; };
+		715C9EF7216C576900D1EC9E /* NetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C9EF6216C576900D1EC9E /* NetTool.swift */; };
 		718025B1216B471F00191826 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025B0216B471F00191826 /* NewsViewController.swift */; };
 		718025B3216B487600191826 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025B2216B487600191826 /* NewsCell.swift */; };
 		718025B5216B548100191826 /* TextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025B4216B548100191826 /* TextController.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		18FEA9C10EC5B0D2239797F6 /* Pods-Content.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Content.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Content/Pods-Content.debug.xcconfig"; sourceTree = "<group>"; };
 		623BCF890E76EB22FB689B6E /* Pods-Content.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Content.release.xcconfig"; path = "Pods/Target Support Files/Pods-Content/Pods-Content.release.xcconfig"; sourceTree = "<group>"; };
+		715C9EF4216C56DF00D1EC9E /* SVTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVTool.swift; sourceTree = "<group>"; };
+		715C9EF6216C576900D1EC9E /* NetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetTool.swift; sourceTree = "<group>"; };
 		718025B0216B471F00191826 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		718025B2216B487600191826 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		718025B4216B548100191826 /* TextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextController.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 			isa = PBXGroup;
 			children = (
 				71F20EFE216B31EA00EB8E74 /* WJSegment */,
+				715C9EF4216C56DF00D1EC9E /* SVTool.swift */,
+				715C9EF6216C576900D1EC9E /* NetTool.swift */,
 			);
 			path = Third;
 			sourceTree = "<group>";
@@ -243,11 +249,17 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Content/Pods-Content-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -262,11 +274,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				718025B7216B54C300191826 /* TextCell.swift in Sources */,
+				715C9EF7216C576900D1EC9E /* NetTool.swift in Sources */,
 				718025B5216B548100191826 /* TextController.swift in Sources */,
 				718025BB216B62C800191826 /* PicController.swift in Sources */,
 				71F20F01216B31EA00EB8E74 /* WJItemsControlView.m in Sources */,
 				718025B9216B5DCD00191826 /* TestController.swift in Sources */,
 				71F20EE8216B222200EB8E74 /* ViewController.swift in Sources */,
+				715C9EF5216C56DF00D1EC9E /* SVTool.swift in Sources */,
 				71F20EF8216B2BFF00EB8E74 /* LoginController.swift in Sources */,
 				71F20EE6216B222200EB8E74 /* AppDelegate.swift in Sources */,
 				718025B1216B471F00191826 /* NewsViewController.swift in Sources */,
