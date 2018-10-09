@@ -49,9 +49,18 @@ class LoginController: UIViewController {
             "username": username.text!,
             "password": password.text!
         ]
-        NetTool.Get(url: "http://localhost:8080/api/list.action", parameters: m_parameters) { (json) in
+        NetTool.Get(url: "http://localhost:8080/api/user/login.action", parameters: m_parameters) { (json) in
             if let json = json {
-                print(json["name"].stringValue)
+                let status = json["status"].intValue
+                if status == 1 {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(withIdentifier: "MainController")
+                    
+                    let nav = UINavigationController(rootViewController: vc)
+                    UIApplication.shared.keyWindow?.rootViewController = nav
+                } else {
+                    SVTool.showError(info: "用户名或密码错误")
+                }
             }
         }
     }

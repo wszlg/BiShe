@@ -300,7 +300,10 @@
                         <viewLayoutGuide key="safeArea" id="lbe-Af-W7z"/>
                     </view>
                     <connections>
+                        <outlet property="password" destination="Ypg-i8-L9Q" id="WTR-U4-9VP"/>
+                        <outlet property="passwordconfirm" destination="WJl-8D-ijv" id="epc-vA-OG4"/>
                         <outlet property="registBtn" destination="lhE-JB-ytd" id="5xi-Re-QGO"/>
+                        <outlet property="username" destination="x4X-uw-W7Z" id="rAt-tS-wel"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e9T-7m-YlF" userLabel="First Responder" sceneMemberID="firstResponder"/>
