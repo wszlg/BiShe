@@ -35,6 +35,37 @@ import java.util.UUID;
  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表'
 
 
+// 建表模型
+
+
+ CREATE TABLE `test_tree` (
+ `id` varchar(64)   NOT NULL COMMENT '编号',
+ `create_by` varchar(64)   NOT NULL COMMENT '创建者',
+ `create_date` datetime NOT NULL COMMENT '创建时间',
+ `update_by` varchar(64)   NOT NULL COMMENT '更新者',
+ `update_date` datetime NOT NULL COMMENT '更新时间',
+ `remarks` varchar(255)   DEFAULT NULL COMMENT '备注信息',
+ `del_flag` char(1)   NOT NULL DEFAULT '0' COMMENT '删除标记',
+ PRIMARY KEY (`id`),
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='树结构表'
+
+
+
+ CREATE TABLE `z_news` (
+ `title` varchar(255)   DEFAULT NULL COMMENT '新闻标题',
+ `picurl` varchar(255)   DEFAULT NULL COMMENT '图片地址',
+ `content` varchar(255)   DEFAULT NULL COMMENT '新闻详情',
+
+ `id` varchar(64)   NOT NULL COMMENT '编号',
+ `create_by` varchar(64)   NOT NULL COMMENT '创建者',
+ `create_date` datetime NOT NULL COMMENT '创建时间',
+ `update_by` varchar(64)   NOT NULL COMMENT '更新者',
+ `update_date` datetime NOT NULL COMMENT '更新时间',
+ `remarks` varchar(255)   DEFAULT NULL COMMENT '备注信息',
+ `del_flag` char(1)   NOT NULL DEFAULT '0' COMMENT '删除标记',
+ PRIMARY KEY (`id`)
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='新闻表'
+
  *
  */
 
