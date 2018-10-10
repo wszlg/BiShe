@@ -12,6 +12,7 @@ class PicCell: UITableViewCell {
     
     
     @IBOutlet weak var labelInfo: UILabel!
+    @IBOutlet weak var img: UIImageView!
     
     
 

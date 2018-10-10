@@ -4,11 +4,19 @@
 //
 //  Created by fcn on 2018/10/8.
 //  Copyright © 2018年 fcn. All rights reserved.
-//
+//  人文
 
 import UIKit
+import MJRefresh
+import Alamofire
+import SwiftyJSON
+import Kingfisher
 
 class PicController: UITableViewController {
+    
+    var datas = [JSON]()
+    var pageNo: Int = 1
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +29,43 @@ class PicController: UITableViewController {
         
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        
+        
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
+        
+        let m_parameters: Parameters = [
+            "pageNo": pageNo,
+            "pageSize": 10
+        ]
+        NetTool.Get(url: "http://localhost:8080/api/user/getHum.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                print(json)
+                let data = json["list"].arrayValue
+                for item in data {
+                    self.datas.append(item)
+                }
+                self.tableView.reloadData()
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    @objc func loadMore()  {
+        pageNo += 1
+        let m_parameters: Parameters = [
+            "pageNo": pageNo,
+            "pageSize": 10
+        ]
+        NetTool.Get(url: "http://localhost:8080/api/user/getHum.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                let data = json["list"].arrayValue
+                for item in data {
+                    self.datas.append(item)
+                }
+                self.tableView.reloadData()
+                self.tableView.mj_footer.endRefreshing()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -37,64 +77,29 @@ class PicController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 20
+        return datas.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "PicCell", for: indexPath) as! PicCell
-
-        // Configure the cell...
         
-        cell.labelInfo.text = "UITableview是iOS开发中使用最频繁的一个控件，在实际开发中，我们经常需要定制cell，让cell显示图片、文字等。由于cell包含的图片和文字是根据服务器返回的数据进行填充的，这就导致cell包含的内容的高度是不定的。"
-
+        let json = datas[indexPath.row]
+        
+        cell.labelInfo.text = json["title"].stringValue
+        
+        cell.img.kf.setImage(with: ImageResource(downloadURL: URL(string: json["picurl"].stringValue)!))
+        
         return cell
     }
 
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "PicDetailController") as! PicDetailController
+        vc.model = datas[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

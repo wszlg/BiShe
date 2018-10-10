@@ -33,7 +33,7 @@ class MainController: UIViewController, UIScrollViewDelegate {
     
         navigationItem.title = "生活趣事"
         
-        let titles = ["新闻", "房产", "体育", "美女", "文化", "历史", "故事", "汽车"]
+        let titles = ["新闻", "科技", "人文", "经管", "历史"]
         
         
         //头部控制的segMent
@@ -76,11 +76,11 @@ class MainController: UIViewController, UIScrollViewDelegate {
         childrens.append(picVC)
         
         
-        childrens.append(TestController())
-        childrens.append(TestController())
-        childrens.append(TestController())
-        childrens.append(TestController())
-        childrens.append(TestController())
+//        childrens.append(TestController())
+//        childrens.append(TestController())
+//        childrens.append(TestController())
+//        childrens.append(TestController())
+//        childrens.append(TestController())
         
         
         

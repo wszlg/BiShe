@@ -7,8 +7,16 @@
 // 只有文字
 
 import UIKit
+import MJRefresh
+import Alamofire
+import SwiftyJSON
 
 class TextController: UITableViewController {
+    
+    
+    var datas = [JSON]()
+    var pageNo: Int = 1
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,15 +28,48 @@ class TextController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
         
+
+        
+        
+        
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
         
+        let m_parameters: Parameters = [
+            "pageNo": pageNo,
+            "pageSize": 10
+        ]
+        NetTool.Get(url: "http://localhost:8080/api/user/getTec.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                print(json)
+                let data = json["list"].arrayValue
+                for item in data {
+                    self.datas.append(item)
+                }
+                self.tableView.reloadData()
+            }
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    
+    @objc func loadMore()  {
+        pageNo += 1
+        let m_parameters: Parameters = [
+            "pageNo": pageNo,
+            "pageSize": 10
+        ]
+        NetTool.Get(url: "http://localhost:8080/api/user/getTec.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                let data = json["list"].arrayValue
+                for item in data {
+                    self.datas.append(item)
+                }
+                self.tableView.reloadData()
+                self.tableView.mj_footer.endRefreshing()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -40,65 +81,27 @@ class TextController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 100
+        return datas.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TextCell", for: indexPath) as! TextCell
 
+        let json = datas[indexPath.row]
         
-        cell.textinfo.text = "iOS8时代的高度计算非常简单，下面两行代码就搞定了，非常方便。前提是需要设置好在垂直高度上的约束。"
-    
-
-
+        cell.textinfo.text = json["title"].stringValue
+        
         return cell
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TextDetailController") as! TextDetailController
+        vc.model = datas[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

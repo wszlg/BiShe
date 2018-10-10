@@ -49,7 +49,7 @@ public class ZNewsController extends BaseController {
 	@RequiresPermissions("znews:zNews:view")
 	@RequestMapping(value = {"list", ""})
 	public String list(@ModelAttribute("zNews") ZNews zNews, HttpServletRequest request, HttpServletResponse response, Model model) {
-		Page<ZNews> page = zNewsService.findPage(new Page<ZNews>(request, response), zNews); 
+		Page<ZNews> page = zNewsService.findPage(new Page<ZNews>(request, response), zNews);
 		model.addAttribute("page", page);
 		return "modules/znews/zNewsList";
 	}

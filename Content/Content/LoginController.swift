@@ -40,29 +40,29 @@ class LoginController: UIViewController {
         
         view.endEditing(true)
         
-        if (username.text?.isEmpty)! || (password.text?.isEmpty)! {
-            SVTool.showError(info: "请输入完整")
-            return
-        }
-        
-        let m_parameters: Parameters = [
-            "username": username.text!,
-            "password": password.text!
-        ]
-        NetTool.Get(url: "http://localhost:8080/api/user/login.action", parameters: m_parameters) { (json) in
-            if let json = json {
-                let status = json["status"].intValue
-                if status == 1 {
+//        if (username.text?.isEmpty)! || (password.text?.isEmpty)! {
+//            SVTool.showError(info: "请输入完整")
+//            return
+//        }
+//        
+//        let m_parameters: Parameters = [
+//            "username": username.text!,
+//            "password": password.text!
+//        ]
+//        NetTool.Get(url: "http://localhost:8080/api/user/login.action", parameters: m_parameters) { (json) in
+//            if let json = json {
+//                let status = json["status"].intValue
+//                if status == 1 {
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "MainController")
                     
                     let nav = UINavigationController(rootViewController: vc)
                     UIApplication.shared.keyWindow?.rootViewController = nav
-                } else {
-                    SVTool.showError(info: "用户名或密码错误")
-                }
-            }
-        }
+//                } else {
+//                    SVTool.showError(info: "用户名或密码错误")
+//                }
+//            }
+//        }
     }
     
 
