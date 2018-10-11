@@ -13,7 +13,10 @@ class MainController: UIViewController, UIScrollViewDelegate {
     
     
     
-    @IBOutlet weak var itemControlView: WJItemsControlView!
+    @IBOutlet weak var itemControlView: UIView!
+    
+    var itemControlView1: WJItemsControlView!
+    
     
     @IBOutlet weak var scroll: UIScrollView!
     
@@ -33,16 +36,20 @@ class MainController: UIViewController, UIScrollViewDelegate {
     
         navigationItem.title = "生活趣事"
         
-        let titles = ["新闻", "科技", "人文", "经管", "历史"]
+        let titles = ["推荐", "新闻", "科技", "人文", "经管"]
         
         
         //头部控制的segMent
         let config = WJItemsConfig()
         config.itemWidth = Float(UIScreen.main.bounds.size.width / 4.0)
         
-        itemControlView.tapAnimation = true
-        itemControlView.config = config;
-        itemControlView.titleArray = titles
+        itemControlView1 = WJItemsControlView(frame: itemControlView.bounds)
+        itemControlView1.tapAnimation = true
+        itemControlView1.config = config;
+        itemControlView1.titleArray = titles
+        itemControlView1.showsVerticalScrollIndicator = false
+        itemControlView.addSubview(itemControlView1)
+        
         
         scroll.delegate = self;
         scroll.isPagingEnabled = true
@@ -50,7 +57,7 @@ class MainController: UIViewController, UIScrollViewDelegate {
         
 //        NSInteger index,BOOL animation
         
-        itemControlView.tapItemWithIndex = { [weak self] (index, animation) in
+        itemControlView1.tapItemWithIndex = { [weak self] (index, animation) in
             
             print("点击了 index = \(index)")
             
@@ -66,6 +73,12 @@ class MainController: UIViewController, UIScrollViewDelegate {
         
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        
+        let rvc = storyboard.instantiateViewController(withIdentifier: "RecommendController") as! RecommendController
+        childrens.append(rvc)
+        
         let vc = storyboard.instantiateViewController(withIdentifier: "NewsViewController") as! NewsViewController
         childrens.append(vc)
         
@@ -75,31 +88,35 @@ class MainController: UIViewController, UIScrollViewDelegate {
         let picVC = storyboard.instantiateViewController(withIdentifier: "PicController") as! PicController
         childrens.append(picVC)
         
-        
-//        childrens.append(TestController())
-//        childrens.append(TestController())
-//        childrens.append(TestController())
-//        childrens.append(TestController())
-//        childrens.append(TestController())
+        let jmaVC = storyboard.instantiateViewController(withIdentifier: "JMamagerController") as! JMamagerController
+        childrens.append(jmaVC)
         
         
         
-        vc.view.frame = CGRect(x: 0, y: 0, width: SWidth - 40, height: scroll.frame.size.height)
-        self.addChildViewController(vc)
-        scroll.addSubview(vc.view)
+//        childrens.append(TestController())
+//        childrens.append(TestController())
+//        childrens.append(TestController())
+//        childrens.append(TestController())
+//        childrens.append(TestController())
+        
+        
+        
+        rvc.view.frame = CGRect(x: 0, y: 0, width: SWidth, height: scroll.frame.size.height)
+        self.addChildViewController(rvc)
+        scroll.addSubview(rvc.view)
     }
 
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset.x
         offset = offset / scrollView.frame.size.width
-        itemControlView.move(toIndex: Float(offset))
+        itemControlView1.move(toIndex: Float(offset))
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         var offset = scrollView.contentOffset.x
         offset = offset / scrollView.frame.size.width
-        itemControlView.endMove(toIndex: Float(offset))
+        itemControlView1.endMove(toIndex: Float(offset))
         
         let index = Int(offset)
         

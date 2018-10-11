@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		50E2CD00B0E32E9350038770 /* Pods_Content.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0442D913F1E669C54868B9 /* Pods_Content.framework */; };
+		7111F525216EEAD0005AB153 /* UMShareSwiftInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111F524216EEAD0005AB153 /* UMShareSwiftInterface.swift */; };
+		713D8F36216F1E1100C7914D /* JMamagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F35216F1E1100C7914D /* JMamagerController.swift */; };
+		713D8F38216F1E5A00C7914D /* JMamagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F37216F1E5A00C7914D /* JMamagerCell.swift */; };
+		713D8F3A216F25DB00C7914D /* JMamagerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F39216F25DB00C7914D /* JMamagerDetailController.swift */; };
+		713D8F3C216F265100C7914D /* JMamagerDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F3B216F265100C7914D /* JMamagerDetailCell.swift */; };
+		713D8F3E216F37A800C7914D /* RecommendController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F3D216F37A800C7914D /* RecommendController.swift */; };
 		714CFD1C216DC45F00E89B5F /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714CFD1B216DC45F00E89B5F /* NewsDetailViewController.swift */; };
 		714CFD1E216DC50700E89B5F /* NewsDetailCell1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714CFD1D216DC50700E89B5F /* NewsDetailCell1.swift */; };
 		714CFD21216DCA5100E89B5F /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714CFD1F216DCA5100E89B5F /* CommentCell.swift */; };
@@ -39,6 +45,12 @@
 /* Begin PBXFileReference section */
 		18FEA9C10EC5B0D2239797F6 /* Pods-Content.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Content.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Content/Pods-Content.debug.xcconfig"; sourceTree = "<group>"; };
 		623BCF890E76EB22FB689B6E /* Pods-Content.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Content.release.xcconfig"; path = "Pods/Target Support Files/Pods-Content/Pods-Content.release.xcconfig"; sourceTree = "<group>"; };
+		7111F524216EEAD0005AB153 /* UMShareSwiftInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UMShareSwiftInterface.swift; sourceTree = "<group>"; };
+		713D8F35216F1E1100C7914D /* JMamagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMamagerController.swift; sourceTree = "<group>"; };
+		713D8F37216F1E5A00C7914D /* JMamagerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMamagerCell.swift; sourceTree = "<group>"; };
+		713D8F39216F25DB00C7914D /* JMamagerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMamagerDetailController.swift; sourceTree = "<group>"; };
+		713D8F3B216F265100C7914D /* JMamagerDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMamagerDetailCell.swift; sourceTree = "<group>"; };
+		713D8F3D216F37A800C7914D /* RecommendController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendController.swift; sourceTree = "<group>"; };
 		714CFD1B216DC45F00E89B5F /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		714CFD1D216DC50700E89B5F /* NewsDetailCell1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailCell1.swift; sourceTree = "<group>"; };
 		714CFD1F216DCA5100E89B5F /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
@@ -115,6 +127,11 @@
 				718025BA216B62C800191826 /* PicController.swift */,
 				714CFD2B216DE7ED00E89B5F /* PicDetailController.swift */,
 				718025BC216B633800191826 /* PicCell.swift */,
+				713D8F35216F1E1100C7914D /* JMamagerController.swift */,
+				713D8F37216F1E5A00C7914D /* JMamagerCell.swift */,
+				713D8F39216F25DB00C7914D /* JMamagerDetailController.swift */,
+				713D8F3B216F265100C7914D /* JMamagerDetailCell.swift */,
+				713D8F3D216F37A800C7914D /* RecommendController.swift */,
 			);
 			path = news;
 			sourceTree = "<group>";
@@ -159,6 +176,7 @@
 		71F20EFD216B31D800EB8E74 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				7111F524216EEAD0005AB153 /* UMShareSwiftInterface.swift */,
 				714CFD25216DCE5C00E89B5F /* Comment.swift */,
 				714CFD23216DCE0800E89B5F /* DataTool.swift */,
 				71F20EFE216B31EA00EB8E74 /* WJSegment */,
@@ -191,6 +209,7 @@
 				71F20EDF216B222200EB8E74 /* Frameworks */,
 				71F20EE0216B222200EB8E74 /* Resources */,
 				B8D0645B950551220B6091C9 /* [CP] Embed Pods Frameworks */,
+				83FA23FBC19970FE65B1291F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -267,6 +286,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		83FA23FBC19970FE65B1291F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Content/Pods-Content-resources.sh",
+				"${PODS_ROOT}/UMCShare/UMShare/UMSocialUI/UMSocialSDKResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/UMSocialSDKResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Content/Pods-Content-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B8D0645B950551220B6091C9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -312,21 +349,27 @@
 				718025B5216B548100191826 /* TextController.swift in Sources */,
 				718025BB216B62C800191826 /* PicController.swift in Sources */,
 				71F20F01216B31EA00EB8E74 /* WJItemsControlView.m in Sources */,
+				713D8F3E216F37A800C7914D /* RecommendController.swift in Sources */,
 				714CFD21216DCA5100E89B5F /* CommentCell.swift in Sources */,
 				71F20EE8216B222200EB8E74 /* ViewController.swift in Sources */,
 				715C9EF5216C56DF00D1EC9E /* SVTool.swift in Sources */,
 				714CFD1C216DC45F00E89B5F /* NewsDetailViewController.swift in Sources */,
+				713D8F3C216F265100C7914D /* JMamagerDetailCell.swift in Sources */,
 				71F20EF8216B2BFF00EB8E74 /* LoginController.swift in Sources */,
 				714CFD2A216DE07A00E89B5F /* TextDetailCell.swift in Sources */,
 				71F20EE6216B222200EB8E74 /* AppDelegate.swift in Sources */,
 				718025B1216B471F00191826 /* NewsViewController.swift in Sources */,
 				71F20EFA216B2D7500EB8E74 /* RegistController.swift in Sources */,
 				718025BD216B633800191826 /* PicCell.swift in Sources */,
+				7111F525216EEAD0005AB153 /* UMShareSwiftInterface.swift in Sources */,
 				714CFD26216DCE5C00E89B5F /* Comment.swift in Sources */,
 				718025B3216B487600191826 /* NewsCell.swift in Sources */,
+				713D8F36216F1E1100C7914D /* JMamagerController.swift in Sources */,
+				713D8F3A216F25DB00C7914D /* JMamagerDetailController.swift in Sources */,
 				71F20EFC216B2F2300EB8E74 /* MainController.swift in Sources */,
 				714CFD28216DDFF800E89B5F /* TextDetailController.swift in Sources */,
 				714CFD24216DCE0800E89B5F /* DataTool.swift in Sources */,
+				713D8F38216F1E5A00C7914D /* JMamagerCell.swift in Sources */,
 				714CFD1E216DC50700E89B5F /* NewsDetailCell1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,7 +516,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2KDZC4V28N;
 				INFOPLIST_FILE = Content/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,7 +537,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2KDZC4V28N;
 				INFOPLIST_FILE = Content/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -13,6 +13,14 @@ import RealmSwift
 class DataTool: NSObject {
     
     
+    class func cacheInfo(value: Any?, key: String)  {
+        UserDefaults.standard.setValue(value, forKey: key)
+        UserDefaults.standard.synchronize()
+    }
+    
+    class func getInfo(key: String) -> Any?  {
+        return UserDefaults.standard.object(forKey: key)
+    }
     
     class func getUUID() -> String {
         return String(Date().timeIntervalSince1970)

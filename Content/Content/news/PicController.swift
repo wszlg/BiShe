@@ -37,7 +37,7 @@ class PicController: UITableViewController {
             "pageNo": pageNo,
             "pageSize": 10
         ]
-        NetTool.Get(url: "http://localhost:8080/api/user/getHum.action", parameters: m_parameters) { (json) in
+        NetTool.Get(url: "\(BACKURL)getHum.action", parameters: m_parameters) { (json) in
             if let json = json {
                 print(json)
                 let data = json["list"].arrayValue
@@ -56,7 +56,7 @@ class PicController: UITableViewController {
             "pageNo": pageNo,
             "pageSize": 10
         ]
-        NetTool.Get(url: "http://localhost:8080/api/user/getHum.action", parameters: m_parameters) { (json) in
+        NetTool.Get(url: "\(BACKURL)getHum.action", parameters: m_parameters) { (json) in
             if let json = json {
                 let data = json["list"].arrayValue
                 for item in data {

@@ -17,7 +17,16 @@ public class ZTec extends DataEntity<ZTec> {
 	private static final long serialVersionUID = 1L;
 	private String title;		// 标题
 	private String content;		// 详情
-	
+	private String type;
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public ZTec() {
 		super();
 	}

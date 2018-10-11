@@ -10,6 +10,11 @@ import UIKit
 import RealmSwift
 
 
+
+let BACKURL = "http://192.168.2.2:8080/api/user/"
+
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -43,7 +48,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         /* Realm 数据库配置，用于数据库的迭代更新 */
         
         
+        
+        
+        UMConfigure.initWithAppkey("5bbeae43b465f5f0d6000052", channel: "app store")
+        setupUSharePlatforms()
+        
+        
+        
         return true
+    }
+    
+    
+    func setupUSharePlatforms()  {
+        UMSocialManager.default().setPlaform(.wechatSession, appKey: "wxdc1e388c3822c80b", appSecret: "3baf1193c85774b3fd9d18447d76cab0", redirectURL: nil)
+//        UMSocialManager.default().setPlaform(.wechatTimeLine, appKey: "wxdc1e388c3822c80b", appSecret: "3baf1193c85774b3fd9d18447d76cab0", redirectURL: nil)
+    }
+    
+    func setupUShareSettings()  {
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

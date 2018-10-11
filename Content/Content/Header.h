@@ -12,4 +12,14 @@
 
 #import "WJItemsControlView.h"
 
+
+//导入UMCommon的OC的头文件
+#import <UMCommon/UMCommon.h>
+
+//导入UShare的OC的头文件
+#import <UMShare/UMShare.h>
+#import <UShareUI/UShareUI.h>
+
+
+
 #endif /* Header_h */

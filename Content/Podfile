@@ -17,4 +17,25 @@ pod 'Kingfisher', '~> 4.8.0'
 pod 'RealmSwift', '~> 3.6.0'
 
 
+pod 'UMCCommon'
+pod 'UMCSecurityPlugins'
+# U-Share SDK UI模块（分享面板，建议添加）
+pod 'UMCShare/UI'
+
+# 集成微信(精简版0.2M)
+pod 'UMCShare/Social/ReducedWeChat'
+
+# 集成微信(完整版14.4M)
+pod 'UMCShare/Social/WeChat'
+
+# 集成QQ/QZone/TIM(精简版0.5M)
+pod 'UMCShare/Social/ReducedQQ'
+
+# 集成QQ/QZone/TIM(完整版7.6M)
+pod 'UMCShare/Social/QQ'
+
+
+
+
+
 end

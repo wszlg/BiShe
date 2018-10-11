@@ -42,11 +42,16 @@ class RegistController: UIViewController {
             "password" : password.text!
         ]
         
-        NetTool.Get(url: "http://localhost:8080/api/user/register.action", parameters: parameters) { (json) in
+        NetTool.Get(url: "\(BACKURL)register.action", parameters: parameters) { (json) in
             if let json = json {
                 let status = json["status"].intValue
                 if status == 1 {
                     SVTool.showSuccess(info: json["message"].stringValue)
+                    
+                    
+                    DataTool.cacheInfo(value: json["user"]["name"].stringValue, key: "username")
+                    DataTool.cacheInfo(value: json["user"]["id"].stringValue, key: "userid")
+                    
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                         let storyboard = UIStoryboard(name: "Main", bundle: nil)

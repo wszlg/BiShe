@@ -10,6 +10,27 @@ PODS:
   - SnapKit (4.0.0)
   - SVProgressHUD (2.2.5)
   - SwiftyJSON (4.1.0)
+  - UMCCommon (1.5.1)
+  - UMCSecurityPlugins (1.0.6)
+  - UMCShare/Core (6.9.3):
+    - UMCCommon
+  - UMCShare/Social/QQ (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
+    - UMCShare/Social/ReducedQQ
+  - UMCShare/Social/ReducedQQ (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/ReducedWeChat (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
+  - UMCShare/Social/WeChat (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
+    - UMCShare/Social/ReducedWeChat
+  - UMCShare/UI (6.9.3):
+    - UMCCommon
+    - UMCShare/Core
 
 DEPENDENCIES:
   - Alamofire (~> 4.7.2)
@@ -19,6 +40,13 @@ DEPENDENCIES:
   - SnapKit (~> 4.0.0)
   - SVProgressHUD (~> 2.2.5)
   - SwiftyJSON (~> 4.1.0)
+  - UMCCommon
+  - UMCSecurityPlugins
+  - UMCShare/Social/QQ
+  - UMCShare/Social/ReducedQQ
+  - UMCShare/Social/ReducedWeChat
+  - UMCShare/Social/WeChat
+  - UMCShare/UI
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -30,6 +58,9 @@ SPEC REPOS:
     - SnapKit
     - SVProgressHUD
     - SwiftyJSON
+    - UMCCommon
+    - UMCSecurityPlugins
+    - UMCShare
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -40,7 +71,10 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  UMCCommon: 16b674e9de0616d3a6128c551348a686d869c3c7
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  UMCShare: 023886b10d11119331c9c46d8e8a0c31fe67c23e
 
-PODFILE CHECKSUM: 6e143b0b052ccc14e59d3f9ea4e2938959bec5c8
+PODFILE CHECKSUM: 245c668f858bed88b8313865200f47c01fe366c4
 
 COCOAPODS: 1.5.3

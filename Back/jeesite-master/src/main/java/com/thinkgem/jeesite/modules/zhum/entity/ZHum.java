@@ -18,7 +18,16 @@ public class ZHum extends DataEntity<ZHum> {
 	private String title;		// 标题
 	private String picurl;		// 图片地址
 	private String content;		// 详情
-	
+	private String type;
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	public ZHum() {
 		super();
 	}

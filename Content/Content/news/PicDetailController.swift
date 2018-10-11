@@ -42,7 +42,19 @@ class PicDetailController: UITableViewController, UITextFieldDelegate {
         reloadDatas()
         
         
-        
+        let btn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        btn.setTitle("微信分享", for: .normal)
+        btn.setTitleColor(UIColor.blue, for: .normal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
+        btn.addTarget(self, action: #selector(weixinShare), for: .touchUpInside)
+    }
+    
+    @objc func weixinShare()  {
+        let messageObject = UMSocialMessageObject()
+        messageObject.text = model["content"].stringValue
+        UMShareSwiftInterface.share(plattype: .wechatSession, messageObject: messageObject, viewController: self) { (data, erroe) in
+            print(errno)
+        }
     }
     
     func reloadDatas()  {
@@ -102,9 +114,9 @@ class PicDetailController: UITableViewController, UITextFieldDelegate {
         let comment = Comment()
         comment.id = DataTool.getUUID()
         comment.comment = textField.text!
-        comment.userid = "sdd"
+        comment.userid = DataTool.getInfo(key: "userid") as! String
         comment.newsid = model["id"].stringValue
-        comment.username = "sdfdsfdd"
+        comment.username = DataTool.getInfo(key: "username") as! String
         comment.datetime = DataTool.getCurrentTime()
         
         DataTool.addValue(values: comment)
