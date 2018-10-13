@@ -11,7 +11,7 @@ import RealmSwift
 
 
 
-let BACKURL = "http://192.168.2.2:8080/api/user/"
+let BACKURL = "http://192.168.0.104:8080/api/user/"
 
 
 

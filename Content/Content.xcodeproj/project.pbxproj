@@ -516,14 +516,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2KDZC4V28N;
+				DEVELOPMENT_TEAM = T4G7WL742G;
 				INFOPLIST_FILE = Content/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sdfsafdsasf.Content;
+				PRODUCT_BUNDLE_IDENTIFIER = sdfsafdsasf.Content11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Content/Header.h;
 				SWIFT_VERSION = 4.0;
@@ -537,14 +537,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2KDZC4V28N;
+				DEVELOPMENT_TEAM = T4G7WL742G;
 				INFOPLIST_FILE = Content/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sdfsafdsasf.Content;
+				PRODUCT_BUNDLE_IDENTIFIER = sdfsafdsasf.Content11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Content/Header.h;
 				SWIFT_VERSION = 4.0;

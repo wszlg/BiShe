@@ -13,7 +13,7 @@ import SwiftyJSON
 import Kingfisher
 
 
-let staticURL = "http://192.168.2.2:8080/"
+let staticURL = "http://192.168.0.104:8080/"
 
 
 class JMamagerController: UITableViewController {

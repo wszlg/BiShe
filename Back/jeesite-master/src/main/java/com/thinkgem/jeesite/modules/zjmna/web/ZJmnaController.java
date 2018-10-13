@@ -79,7 +79,8 @@ public class ZJmnaController extends BaseController {
 		String files = request.getSession().getServletContext().getRealPath("files");
 		File file = new File(files);
 		if (!file.exists()) {
-			file.getParentFile().mkdirs();
+//			file.getParentFile().mkdirs();
+			file.mkdir();
 		}
 
 		String picextentsion = FileUtils.getFileExtension(picfile.getOriginalFilename());
