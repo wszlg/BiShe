@@ -2,6 +2,8 @@ package com.thinkgem.jeesite.modules.stu.web;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.web.BaseController;
+import com.thinkgem.jeesite.modules.zcoll.entity.ZCollect;
+import com.thinkgem.jeesite.modules.zcoll.service.ZCollectService;
 import com.thinkgem.jeesite.modules.zhum.entity.ZHum;
 import com.thinkgem.jeesite.modules.zhum.service.ZHumService;
 import com.thinkgem.jeesite.modules.zjmna.entity.ZJmna;
@@ -81,20 +83,20 @@ import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 
 
 
- CREATE TABLE `z_rec` (
+ CREATE TABLE `z_collect` (
  `userid` varchar(64)   DEFAULT NULL COMMENT '用户id',
- `type` int(1)   DEFAULT NULL COMMENT '类型',
- `count` int(1)   DEFAULT NULL COMMENT '计数',
+ `type` varchar(1)   DEFAULT NULL COMMENT '类型',
+ `news_id` varchar(64)   DEFAULT NULL COMMENT '新闻id',
 
  `id` varchar(64)   NOT NULL COMMENT '编号',
- `create_by` varchar(64)   NOT NULL COMMENT '创建者',
+ `create_by` varchar(64)   DEFAULT 'dddd' COMMENT '创建者',
  `create_date` datetime NOT NULL COMMENT '创建时间',
- `update_by` varchar(64)   DEFAULT 'dddddddddd' COMMENT '更新者',
+ `update_by` varchar(64)   DEFAULT 'ddddd' COMMENT '更新者',
  `update_date` datetime NOT NULL COMMENT '更新时间',
  `remarks` varchar(255)   DEFAULT NULL COMMENT '备注信息',
  `del_flag` char(1)   NOT NULL DEFAULT '0' COMMENT '删除标记',
  PRIMARY KEY (`id`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推荐表'
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收藏表'
 
 
 
@@ -126,7 +128,118 @@ public class ApiTestController extends BaseController {
     @Autowired
     private ZRecService zRecService;
 
+    @Autowired
+    private ZCollectService zCollectService;
 
+
+
+    @ResponseBody
+    @RequestMapping(value = {"collect"}, method = RequestMethod.GET)
+    public Map collect(String userid, String type, String id) {
+
+        Map map = new HashMap();
+
+        ZCollect zCollect = new ZCollect();
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+
+        zCollect.setIsNewRecord(true);
+        zCollect.setId(uuid);
+        zCollect.setNewsId(id);
+        zCollect.setUserid(userid);
+        zCollect.setType(type);
+
+        zCollectService.save(zCollect);
+
+
+        return map;
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = {"getCollect"}, method = RequestMethod.GET)
+    public Map getCollect(String userid, String type, String id) {
+
+        Map map = new HashMap();
+
+        ZCollect zCollect = new ZCollect();
+        zCollect.setUserid(userid);
+
+        List<ZCollect> list1 = zCollectService.findList(zCollect);
+
+        List list = new ArrayList();
+
+//        List<ZNews> newsList = zNewsService.findList(new ZNews());
+//        List<ZTec> zTecList = zTecService.findList(new ZTec());
+//        List<ZHum> zHumslist = zHumService.findList(new ZHum());
+//        List<ZJmna> zJmnaList = zJmnaService.findList(new ZJmna());
+
+
+        for (ZCollect zCollect1 : list1) {
+
+            switch (Integer.valueOf(zCollect1.getType())) {
+                case 0:
+                {
+                    ZNews zNews = new ZNews();
+                    zNews.setId(zCollect1.getNewsId());
+                    List<ZNews> list2 = zNewsService.findList(zNews);
+                    if (list2.size() > 0) {
+                        ZNews zNews1 = list2.get(0);
+                        zNews1.setType("0");
+                        list.add(zNews1);
+                    }
+
+                    break;
+                }
+                case 1:
+                {
+                    ZTec zNews = new ZTec();
+                    zNews.setId(zCollect1.getNewsId());
+                    List<ZTec> list2 = zTecService.findList(zNews);
+                    if (list2.size() > 0) {
+                        ZTec zNews1 = list2.get(0);
+                        zNews1.setType("1");
+                        list.add(zNews1);
+                    }
+                    break;
+                }
+
+                case 2:
+                {
+                    ZHum zNews = new ZHum();
+                    zNews.setId(zCollect1.getNewsId());
+                    List<ZHum> list2 = zHumService.findList(zNews);
+                    if (list2.size() > 0) {
+                        ZHum zNews1 = list2.get(0);
+                        zNews1.setType("2");
+                        list.add(zNews1);
+                    }
+                    break;
+                }
+
+                case 3:
+                {
+                    ZJmna zNews = new ZJmna();
+                    zNews.setId(zCollect1.getNewsId());
+                    List<ZJmna> list2 = zJmnaService.findList(zNews);
+                    if (list2.size() > 0) {
+                        ZJmna zNews1 = list2.get(0);
+                        zNews1.setType("3");
+                        list.add(zNews1);
+                    }
+                    break;
+                }
+
+
+            }
+        }
+
+
+        map.put("list", list);
+
+
+
+        return map;
+    }
 
 
     @ResponseBody
@@ -326,6 +439,7 @@ public class ApiTestController extends BaseController {
                         zNews.setType("0");
                         list.add(zNews);
                     }
+                    break;
                 }
 
                 case 1:
@@ -334,6 +448,7 @@ public class ApiTestController extends BaseController {
                         zNews.setType("1");
                         list.add(zNews);
                     }
+                    break;
                 }
 
                 case 2:
@@ -342,6 +457,7 @@ public class ApiTestController extends BaseController {
                         zNews.setType("2");
                         list.add(zNews);
                     }
+                    break;
                 }
 
                 case 3:
@@ -351,6 +467,7 @@ public class ApiTestController extends BaseController {
                         zNews.setType("3");
                         list.add(zNews);
                     }
+                    break;
                 }
 
 

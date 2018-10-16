@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.thinkgem.jeesite.modules.zjmna.dao.ZJmnaDao">
+<mapper namespace="com.thinkgem.jeesite.modules.zcoll.dao.ZCollectDao">
     
-	<sql id="zJmnaColumns">
-		a.title AS "title",
-		a.picurl AS "picurl",
-		a.videourl AS "videourl",
+	<sql id="zCollectColumns">
+		a.userid AS "userid",
+		a.type AS "type",
+		a.news_id AS "newsId",
 		a.id AS "id",
 		a.create_by AS "createBy.id",
 		a.create_date AS "createDate",
@@ -15,29 +15,32 @@
 		a.del_flag AS "delFlag"
 	</sql>
 	
-	<sql id="zJmnaJoins">
+	<sql id="zCollectJoins">
 	</sql>
     
-	<select id="get" resultType="ZJmna">
+	<select id="get" resultType="ZCollect">
 		SELECT 
-			<include refid="zJmnaColumns"/>
-		FROM z_jmna a
-		<include refid="zJmnaJoins"/>
+			<include refid="zCollectColumns"/>
+		FROM z_collect a
+		<include refid="zCollectJoins"/>
 		WHERE a.id = #{id}
 	</select>
 	
-	<select id="findList" resultType="ZJmna">
+	<select id="findList" resultType="ZCollect">
 		SELECT 
-			<include refid="zJmnaColumns"/>
-		FROM z_jmna a
-		<include refid="zJmnaJoins"/>
+			<include refid="zCollectColumns"/>
+		FROM z_collect a
+		<include refid="zCollectJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
-			<if test="title != null and title != ''">
-				AND a.title LIKE 
-					<if test="dbName == 'oracle'">'%'||#{title}||'%'</if>
-					<if test="dbName == 'mssql'">'%'+#{title}+'%'</if>
-					<if test="dbName == 'mysql'">concat('%',#{title},'%')</if>
+			<if test="userid != null and userid != ''">
+				AND a.userid = #{userid}
+			</if>
+			<if test="type != null and type != ''">
+				AND a.type = #{type}
+			</if>
+			<if test="newsId != null and newsId != ''">
+				AND a.news_id = #{newsId}
 			</if>
 			<if test="id != null and id != ''">
 				AND a.id = #{id}
@@ -53,11 +56,11 @@
 		</choose>
 	</select>
 	
-	<select id="findAllList" resultType="ZJmna">
+	<select id="findAllList" resultType="ZCollect">
 		SELECT 
-			<include refid="zJmnaColumns"/>
-		FROM z_jmna a
-		<include refid="zJmnaJoins"/>
+			<include refid="zCollectColumns"/>
+		FROM z_collect a
+		<include refid="zCollectJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>		
@@ -72,10 +75,10 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO z_jmna(
-			title,
-			picurl,
-			videourl,
+		INSERT INTO z_collect(
+			userid,
+			type,
+			news_id,
 			id,
 			create_by,
 			create_date,
@@ -84,9 +87,9 @@
 			remarks,
 			del_flag
 		) VALUES (
-			#{title},
-			#{picurl},
-			#{videourl},
+			#{userid},
+			#{type},
+			#{newsId},
 			#{id},
 			#{createBy.id},
 			#{createDate},
@@ -98,10 +101,10 @@
 	</insert>
 	
 	<update id="update">
-		UPDATE z_jmna SET 	
-			title = #{title},
-			picurl = #{picurl},
-			videourl = #{videourl},
+		UPDATE z_collect SET 	
+			userid = #{userid},
+			type = #{type},
+			news_id = #{newsId},
 			update_by = #{updateBy.id},
 			update_date = #{updateDate},
 			remarks = #{remarks}
@@ -109,7 +112,7 @@
 	</update>
 	
 	<update id="delete">
-		UPDATE z_jmna SET 
+		UPDATE z_collect SET 
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id}
 	</update>

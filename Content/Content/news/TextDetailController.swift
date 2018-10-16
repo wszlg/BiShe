@@ -57,6 +57,30 @@ class TextDetailController: UITableViewController, UITextFieldDelegate {
             }
         }
         
+        let collBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        collBtn.setTitle("收藏", for: .normal)
+        collBtn.setTitleColor(UIColor.blue, for: .normal)
+        navigationItem.titleView = collBtn
+        collBtn.addTarget(self, action: #selector(didClickCollBtn), for: .touchUpInside)
+        
+        
+    }
+    
+    @objc func didClickCollBtn()  {
+        SVTool.showSuccess(info: "收藏成功")
+        
+        let m_parameters: Parameters = [
+            "userid": DataTool.getInfo(key: "userid") as! String,
+            "type": model["type"].intValue,
+            "id" : model["id"].stringValue
+        ]
+        NetTool.Get(url: "\(BACKURL)collect.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                print(json)
+            }
+        }
+        
+        
     }
     
     @objc func weixinShare()  {

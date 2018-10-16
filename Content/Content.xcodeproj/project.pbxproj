@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		50E2CD00B0E32E9350038770 /* Pods_Content.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E0442D913F1E669C54868B9 /* Pods_Content.framework */; };
 		7111F525216EEAD0005AB153 /* UMShareSwiftInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7111F524216EEAD0005AB153 /* UMShareSwiftInterface.swift */; };
+		7113691B2175C051001C069D /* MyCollectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7113691A2175C051001C069D /* MyCollectController.swift */; };
 		713D8F36216F1E1100C7914D /* JMamagerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F35216F1E1100C7914D /* JMamagerController.swift */; };
 		713D8F38216F1E5A00C7914D /* JMamagerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F37216F1E5A00C7914D /* JMamagerCell.swift */; };
 		713D8F3A216F25DB00C7914D /* JMamagerDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 713D8F39216F25DB00C7914D /* JMamagerDetailController.swift */; };
@@ -46,6 +47,7 @@
 		18FEA9C10EC5B0D2239797F6 /* Pods-Content.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Content.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Content/Pods-Content.debug.xcconfig"; sourceTree = "<group>"; };
 		623BCF890E76EB22FB689B6E /* Pods-Content.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Content.release.xcconfig"; path = "Pods/Target Support Files/Pods-Content/Pods-Content.release.xcconfig"; sourceTree = "<group>"; };
 		7111F524216EEAD0005AB153 /* UMShareSwiftInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UMShareSwiftInterface.swift; sourceTree = "<group>"; };
+		7113691A2175C051001C069D /* MyCollectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectController.swift; sourceTree = "<group>"; };
 		713D8F35216F1E1100C7914D /* JMamagerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMamagerController.swift; sourceTree = "<group>"; };
 		713D8F37216F1E5A00C7914D /* JMamagerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMamagerCell.swift; sourceTree = "<group>"; };
 		713D8F39216F25DB00C7914D /* JMamagerDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JMamagerDetailController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				713D8F39216F25DB00C7914D /* JMamagerDetailController.swift */,
 				713D8F3B216F265100C7914D /* JMamagerDetailCell.swift */,
 				713D8F3D216F37A800C7914D /* RecommendController.swift */,
+				7113691A2175C051001C069D /* MyCollectController.swift */,
 			);
 			path = news;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				714CFD1C216DC45F00E89B5F /* NewsDetailViewController.swift in Sources */,
 				713D8F3C216F265100C7914D /* JMamagerDetailCell.swift in Sources */,
 				71F20EF8216B2BFF00EB8E74 /* LoginController.swift in Sources */,
+				7113691B2175C051001C069D /* MyCollectController.swift in Sources */,
 				714CFD2A216DE07A00E89B5F /* TextDetailCell.swift in Sources */,
 				71F20EE6216B222200EB8E74 /* AppDelegate.swift in Sources */,
 				718025B1216B471F00191826 /* NewsViewController.swift in Sources */,
@@ -516,7 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4G7WL742G;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Content/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -537,7 +541,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = T4G7WL742G;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Content/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

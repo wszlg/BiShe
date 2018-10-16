@@ -54,12 +54,21 @@ class LoginController: UIViewController {
                 print(json)
                 let status = json["status"].intValue
                 if status == 1 {
+                    
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let vc = storyboard.instantiateViewController(withIdentifier: "MainController")
-                    
                     let nav = UINavigationController(rootViewController: vc)
-                    UIApplication.shared.keyWindow?.rootViewController = nav
                     
+                    let tab =  UITabBarController()
+                    tab.addChildViewController(nav)
+                    nav.tabBarItem.title = "精彩内容"
+                    let collect = storyboard.instantiateViewController(withIdentifier: "MyCollectController")
+                    let nav1 = UINavigationController(rootViewController: collect)
+                    
+                    nav1.tabBarItem.title = "我的收藏"
+                    tab.addChildViewController(nav1)
+                    UIApplication.shared.keyWindow?.rootViewController = tab
+
                     let username = json["user"]["name"].stringValue
                     let userid = json["user"]["id"].stringValue
                     DataTool.cacheInfo(value: username, key: "username")
