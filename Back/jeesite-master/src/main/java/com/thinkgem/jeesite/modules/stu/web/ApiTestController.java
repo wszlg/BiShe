@@ -8,6 +8,8 @@ import com.thinkgem.jeesite.modules.zjmna.entity.ZJmna;
 import com.thinkgem.jeesite.modules.zjmna.service.ZJmnaService;
 import com.thinkgem.jeesite.modules.znews.entity.ZNews;
 import com.thinkgem.jeesite.modules.znews.service.ZNewsService;
+import com.thinkgem.jeesite.modules.zrec.entity.ZRec;
+import com.thinkgem.jeesite.modules.zrec.service.ZRecService;
 import com.thinkgem.jeesite.modules.ztec.entity.ZTec;
 import com.thinkgem.jeesite.modules.ztec.service.ZTecService;
 import com.thinkgem.jeesite.modules.zuser.entity.ZUser;
@@ -23,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.*;
+
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 
 
 /**
@@ -77,20 +81,20 @@ import java.util.*;
 
 
 
- CREATE TABLE `z_jmna` (
- `title` varchar(255)   DEFAULT NULL COMMENT '视频描述',
- `picurl` varchar(255)   DEFAULT NULL COMMENT '图片地址',
- `videourl` varchar(255)   DEFAULT NULL COMMENT '视频地址',
+ CREATE TABLE `z_rec` (
+ `userid` varchar(64)   DEFAULT NULL COMMENT '用户id',
+ `type` int(1)   DEFAULT NULL COMMENT '类型',
+ `count` int(1)   DEFAULT NULL COMMENT '计数',
 
  `id` varchar(64)   NOT NULL COMMENT '编号',
  `create_by` varchar(64)   NOT NULL COMMENT '创建者',
  `create_date` datetime NOT NULL COMMENT '创建时间',
- `update_by` varchar(64)   NOT NULL COMMENT '更新者',
+ `update_by` varchar(64)   DEFAULT 'dddddddddd' COMMENT '更新者',
  `update_date` datetime NOT NULL COMMENT '更新时间',
  `remarks` varchar(255)   DEFAULT NULL COMMENT '备注信息',
  `del_flag` char(1)   NOT NULL DEFAULT '0' COMMENT '删除标记',
  PRIMARY KEY (`id`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='经管表'
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='推荐表'
 
 
 
@@ -119,6 +123,29 @@ public class ApiTestController extends BaseController {
     @Autowired
     private ZJmnaService zJmnaService;
 
+    @Autowired
+    private ZRecService zRecService;
+
+
+
+
+    @ResponseBody
+    @RequestMapping(value = {"recAddCount"}, method = RequestMethod.GET)
+    public Map recAddCount(String userid, String type, HttpServletRequest request, HttpServletResponse response) {
+
+        Map map = new HashMap();
+
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        ZRec zRec = new ZRec();
+        zRec.setIsNewRecord(true);
+        zRec.setId(uuid);
+        zRec.setUserid(userid);
+        zRec.setType(type);
+        zRec.setCount("1");
+        zRecService.save(zRec);
+
+        return map;
+    }
 
 
     @ResponseBody
@@ -187,6 +214,9 @@ public class ApiTestController extends BaseController {
         int pageSize = Integer.parseInt(request.getParameter("pageSize"));
         Page p = new Page(pageNo, pageSize,page.getCount());
         Page<ZNews> page1 = zNewsService.findPage(p, zNews);
+        for (ZNews zNews1 : page1.getList()) {
+            zNews1.setType("0");
+        }
         map.put("list", page1.getList());
         return map;
     }
@@ -201,6 +231,9 @@ public class ApiTestController extends BaseController {
         int pageSize = Integer.parseInt(request.getParameter("pageSize"));
         Page p = new Page(pageNo, pageSize,page.getCount());
         Page<ZTec> page1 = zTecService.findPage(p, zTec);
+        for (ZTec zTec1 : page1.getList()) {
+            zTec1.setType("1");
+        }
         map.put("list", page1.getList());
         return map;
     }
@@ -215,6 +248,9 @@ public class ApiTestController extends BaseController {
         int pageSize = Integer.parseInt(request.getParameter("pageSize"));
         Page p = new Page(pageNo, pageSize,page.getCount());
         Page<ZHum> page1 = zHumService.findPage(p, zHum);
+        for (ZHum zTec1 : page1.getList()) {
+            zTec1.setType("2");
+        }
         map.put("list", page1.getList());
         return map;
     }
@@ -229,17 +265,21 @@ public class ApiTestController extends BaseController {
         int pageSize = Integer.parseInt(request.getParameter("pageSize"));
         Page p = new Page(pageNo, pageSize,page.getCount());
         Page<ZJmna> page1 = zJmnaService.findPage(p, zJmna);
+        for (ZJmna zTec1 : page1.getList()) {
+            zTec1.setType("3");
+        }
         map.put("list", page1.getList());
         return map;
     }
 
     @ResponseBody
     @RequestMapping(value = {"getRecommand"}, method = RequestMethod.GET)
-    public Map getRecommand(HttpServletRequest request, HttpServletResponse response) {
+    public Map getRecommand(HttpServletRequest request, HttpServletResponse response, String userid) {
         Map map = new HashMap();
 
         List list = new ArrayList();
-        Random rand = new Random();
+
+
 
 
         List<ZNews> newsList = zNewsService.findList(new ZNews());
@@ -248,31 +288,99 @@ public class ApiTestController extends BaseController {
         List<ZJmna> zJmnaList = zJmnaService.findList(new ZJmna());
 
 
+
+
+
+
+        int size = zRecService.findList(new ZRec(userid, "0")).size();
+        int size1 = zRecService.findList(new ZRec(userid, "1")).size();
+        int size2 = zRecService.findList(new ZRec(userid, "2")).size();
+        int size3 = zRecService.findList(new ZRec(userid, "3")).size();
+
+
+//        List list1 = new
+
+        int totalCount = size + size1 + size2 + size3;
+
+
+        int[] list0 = {size, size1, size2, size3};
+        int num = list0[0];
+        int index = 0;
+        for (int i = 0; i < list0.length; i++) {
+            if (list0[i] > num) {
+                num = list0[i];
+            }
+        }
+        for (int i = 0; i < list0.length; i++) {
+            if (list0[i] == num) {
+                index = i;
+            }
+        }
+
+
+        if (totalCount != 0) {
+            switch (index) {
+                case 0:
+                {
+                    for (ZNews zNews : newsList) {
+                        zNews.setType("0");
+                        list.add(zNews);
+                    }
+                }
+
+                case 1:
+                {
+                    for (ZTec zNews : zTecList) {
+                        zNews.setType("1");
+                        list.add(zNews);
+                    }
+                }
+
+                case 2:
+                {
+                    for (ZHum zNews : zHumslist) {
+                        zNews.setType("2");
+                        list.add(zNews);
+                    }
+                }
+
+                case 3:
+
+                {
+                    for (ZJmna zNews : zJmnaList) {
+                        zNews.setType("3");
+                        list.add(zNews);
+                    }
+                }
+
+
+            }
+        }
+
+
+
+
+
+        Random rand = new Random();
         for (int i = 0; i < newsList.size() + zTecList.size() + zHumslist.size() + zJmnaList.size(); i++) {
 
             ZNews zNews = newsList.get(rand.nextInt(newsList.size()));
             zNews.setType("0");
             list.add(zNews);
 
-
             ZTec zTec = zTecList.get(rand.nextInt(zTecList.size()));
             zTec.setType("1");
             list.add(zTec);
 
-
             ZHum zHum = zHumslist.get(rand.nextInt(zHumslist.size()));
             zHum.setType("2");
             list.add(zHum);
-
 
             ZJmna zJmna = zJmnaList.get(rand.nextInt(zJmnaList.size()));
             zJmna.setType("3");
             list.add(zJmna);
 
         }
-
-//        rand.nextInt(list.size());
-
 
 
         map.put("list", list);
@@ -281,3 +389,18 @@ public class ApiTestController extends BaseController {
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

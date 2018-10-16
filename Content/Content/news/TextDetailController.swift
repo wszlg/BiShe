@@ -9,7 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Kingfisher
-
+import Alamofire
 
 
 class TextDetailController: UITableViewController, UITextFieldDelegate {
@@ -44,6 +44,19 @@ class TextDetailController: UITableViewController, UITextFieldDelegate {
         btn.setTitleColor(UIColor.blue, for: .normal)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: btn)
         btn.addTarget(self, action: #selector(weixinShare), for: .touchUpInside)
+        
+        
+        // 推荐统计
+        let m_parameters: Parameters = [
+            "userid": DataTool.getInfo(key: "userid") as! String,
+            "type": model["type"].intValue
+        ]
+        NetTool.Get(url: "\(BACKURL)recAddCount.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                print(json)
+            }
+        }
+        
     }
     
     @objc func weixinShare()  {

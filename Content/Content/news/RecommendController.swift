@@ -33,11 +33,12 @@ class RecommendController: UITableViewController {
         tableView.estimatedRowHeight = 100
         tableView.mj_footer = MJRefreshAutoNormalFooter(refreshingTarget: self, refreshingAction: #selector(loadMore))
         
-        
+        tableView.mj_header = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(getnew))
         
         
         let m_parameters: Parameters = [
             "pageNo": pageNo,
+            "userid": DataTool.getInfo(key: "userid") as! String,
             "pageSize": 10
         ]
         NetTool.Get(url: "\(BACKURL)getRecommand.action", parameters: m_parameters) { (json) in
@@ -60,6 +61,28 @@ class RecommendController: UITableViewController {
         
         
         
+        
+    }
+    
+    @objc func getnew()  {
+        
+        self.datas.removeAll()
+        let m_parameters: Parameters = [
+            "pageNo": pageNo,
+            "userid": DataTool.getInfo(key: "userid") as! String,
+            "pageSize": 10
+        ]
+        NetTool.Get(url: "\(BACKURL)getRecommand.action", parameters: m_parameters) { (json) in
+            if let json = json {
+                print(json)
+                let data = json["list"].arrayValue
+                for item in data {
+                    self.datas.append(item)
+                }
+                self.tableView.reloadData()
+                self.tableView.mj_header.endRefreshing()
+            }
+        }
         
     }
     
