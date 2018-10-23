@@ -26,6 +26,13 @@
 		714CFD2C216DE7ED00E89B5F /* PicDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714CFD2B216DE7ED00E89B5F /* PicDetailController.swift */; };
 		715C9EF5216C56DF00D1EC9E /* SVTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C9EF4216C56DF00D1EC9E /* SVTool.swift */; };
 		715C9EF7216C576900D1EC9E /* NetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715C9EF6216C576900D1EC9E /* NetTool.swift */; };
+		7178A8EF217EC94900C3C096 /* MineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178A8EE217EC94900C3C096 /* MineController.swift */; };
+		7178A8F1217ECB7E00C3C096 /* ChangePassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178A8F0217ECB7E00C3C096 /* ChangePassController.swift */; };
+		7178A8F3217EE3DD00C3C096 /* CreateChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178A8F2217EE3DD00C3C096 /* CreateChatController.swift */; };
+		7178A8F5217EE4ED00C3C096 /* ChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178A8F4217EE4ED00C3C096 /* ChatsController.swift */; };
+		7178A8F7217EE5BE00C3C096 /* ChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178A8F6217EE5BE00C3C096 /* ChatsCell.swift */; };
+		7178A8F9217EED7F00C3C096 /* ChatDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178A8F8217EED7F00C3C096 /* ChatDetailController.swift */; };
+		7178A8FB217EEDA200C3C096 /* ChatDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7178A8FA217EEDA200C3C096 /* ChatDetailCell.swift */; };
 		718025B1216B471F00191826 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025B0216B471F00191826 /* NewsViewController.swift */; };
 		718025B3216B487600191826 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025B2216B487600191826 /* NewsCell.swift */; };
 		718025B5216B548100191826 /* TextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025B4216B548100191826 /* TextController.swift */; };
@@ -64,6 +71,13 @@
 		714CFD2B216DE7ED00E89B5F /* PicDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicDetailController.swift; sourceTree = "<group>"; };
 		715C9EF4216C56DF00D1EC9E /* SVTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVTool.swift; sourceTree = "<group>"; };
 		715C9EF6216C576900D1EC9E /* NetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetTool.swift; sourceTree = "<group>"; };
+		7178A8EE217EC94900C3C096 /* MineController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MineController.swift; sourceTree = "<group>"; };
+		7178A8F0217ECB7E00C3C096 /* ChangePassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePassController.swift; sourceTree = "<group>"; };
+		7178A8F2217EE3DD00C3C096 /* CreateChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateChatController.swift; sourceTree = "<group>"; };
+		7178A8F4217EE4ED00C3C096 /* ChatsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsController.swift; sourceTree = "<group>"; };
+		7178A8F6217EE5BE00C3C096 /* ChatsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatsCell.swift; sourceTree = "<group>"; };
+		7178A8F8217EED7F00C3C096 /* ChatDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailController.swift; sourceTree = "<group>"; };
+		7178A8FA217EEDA200C3C096 /* ChatDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDetailCell.swift; sourceTree = "<group>"; };
 		718025B0216B471F00191826 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		718025B2216B487600191826 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		718025B4216B548100191826 /* TextController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextController.swift; sourceTree = "<group>"; };
@@ -135,6 +149,13 @@
 				713D8F3B216F265100C7914D /* JMamagerDetailCell.swift */,
 				713D8F3D216F37A800C7914D /* RecommendController.swift */,
 				7113691A2175C051001C069D /* MyCollectController.swift */,
+				7178A8EE217EC94900C3C096 /* MineController.swift */,
+				7178A8F0217ECB7E00C3C096 /* ChangePassController.swift */,
+				7178A8F2217EE3DD00C3C096 /* CreateChatController.swift */,
+				7178A8F4217EE4ED00C3C096 /* ChatsController.swift */,
+				7178A8F6217EE5BE00C3C096 /* ChatsCell.swift */,
+				7178A8F8217EED7F00C3C096 /* ChatDetailController.swift */,
+				7178A8FA217EEDA200C3C096 /* ChatDetailCell.swift */,
 			);
 			path = news;
 			sourceTree = "<group>";
@@ -351,21 +372,28 @@
 				715C9EF7216C576900D1EC9E /* NetTool.swift in Sources */,
 				718025B5216B548100191826 /* TextController.swift in Sources */,
 				718025BB216B62C800191826 /* PicController.swift in Sources */,
+				7178A8F1217ECB7E00C3C096 /* ChangePassController.swift in Sources */,
 				71F20F01216B31EA00EB8E74 /* WJItemsControlView.m in Sources */,
+				7178A8F9217EED7F00C3C096 /* ChatDetailController.swift in Sources */,
+				7178A8F7217EE5BE00C3C096 /* ChatsCell.swift in Sources */,
 				713D8F3E216F37A800C7914D /* RecommendController.swift in Sources */,
 				714CFD21216DCA5100E89B5F /* CommentCell.swift in Sources */,
 				71F20EE8216B222200EB8E74 /* ViewController.swift in Sources */,
 				715C9EF5216C56DF00D1EC9E /* SVTool.swift in Sources */,
 				714CFD1C216DC45F00E89B5F /* NewsDetailViewController.swift in Sources */,
+				7178A8FB217EEDA200C3C096 /* ChatDetailCell.swift in Sources */,
 				713D8F3C216F265100C7914D /* JMamagerDetailCell.swift in Sources */,
+				7178A8F3217EE3DD00C3C096 /* CreateChatController.swift in Sources */,
 				71F20EF8216B2BFF00EB8E74 /* LoginController.swift in Sources */,
 				7113691B2175C051001C069D /* MyCollectController.swift in Sources */,
 				714CFD2A216DE07A00E89B5F /* TextDetailCell.swift in Sources */,
 				71F20EE6216B222200EB8E74 /* AppDelegate.swift in Sources */,
 				718025B1216B471F00191826 /* NewsViewController.swift in Sources */,
 				71F20EFA216B2D7500EB8E74 /* RegistController.swift in Sources */,
+				7178A8EF217EC94900C3C096 /* MineController.swift in Sources */,
 				718025BD216B633800191826 /* PicCell.swift in Sources */,
 				7111F525216EEAD0005AB153 /* UMShareSwiftInterface.swift in Sources */,
+				7178A8F5217EE4ED00C3C096 /* ChatsController.swift in Sources */,
 				714CFD26216DCE5C00E89B5F /* Comment.swift in Sources */,
 				718025B3216B487600191826 /* NewsCell.swift in Sources */,
 				713D8F36216F1E1100C7914D /* JMamagerController.swift in Sources */,

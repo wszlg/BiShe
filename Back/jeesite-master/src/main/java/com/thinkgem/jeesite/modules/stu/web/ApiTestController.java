@@ -2,6 +2,8 @@ package com.thinkgem.jeesite.modules.stu.web;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.web.BaseController;
+import com.thinkgem.jeesite.modules.zchat.entity.ZChat;
+import com.thinkgem.jeesite.modules.zchat.service.ZChatService;
 import com.thinkgem.jeesite.modules.zcoll.entity.ZCollect;
 import com.thinkgem.jeesite.modules.zcoll.service.ZCollectService;
 import com.thinkgem.jeesite.modules.zhum.entity.ZHum;
@@ -83,10 +85,10 @@ import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 
 
 
- CREATE TABLE `z_collect` (
+ CREATE TABLE `z_chat` (
  `userid` varchar(64)   DEFAULT NULL COMMENT '用户id',
- `type` varchar(1)   DEFAULT NULL COMMENT '类型',
- `news_id` varchar(64)   DEFAULT NULL COMMENT '新闻id',
+ `content` varchar(255)   DEFAULT NULL COMMENT '话题内容',
+ `username` varchar(64)   DEFAULT NULL COMMENT '用户昵称',
 
  `id` varchar(64)   NOT NULL COMMENT '编号',
  `create_by` varchar(64)   DEFAULT 'dddd' COMMENT '创建者',
@@ -96,7 +98,7 @@ import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
  `remarks` varchar(255)   DEFAULT NULL COMMENT '备注信息',
  `del_flag` char(1)   NOT NULL DEFAULT '0' COMMENT '删除标记',
  PRIMARY KEY (`id`)
- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='收藏表'
+ ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='话题表'
 
 
 
@@ -130,6 +132,49 @@ public class ApiTestController extends BaseController {
 
     @Autowired
     private ZCollectService zCollectService;
+
+    @Autowired
+    private ZChatService zChatService;
+
+
+
+    @ResponseBody
+    @RequestMapping(value = {"createChat"}, method = RequestMethod.GET)
+    public Map createChat(String userid, String username, String content) {
+
+        Map map = new HashMap();
+
+        String uuid = UUID.randomUUID().toString().replaceAll("-","");
+        ZChat zChat = new ZChat();
+        zChat.setId(uuid);
+        zChat.setUserid(userid);
+        zChat.setUsername(username);
+        zChat.setContent(content);
+        zChat.setIsNewRecord(true);
+        zChatService.save(zChat);
+
+        map.put("status", 1);
+
+
+        return map;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = {"getChats"}, method = RequestMethod.GET)
+    public Map getChats() {
+
+        Map map = new HashMap();
+
+        ZChat zChat = new ZChat();
+
+        List<ZChat> list = zChatService.findList(zChat);
+
+        map.put("status", 1);
+        map.put("list", list);
+
+
+        return map;
+    }
 
 
 
@@ -284,6 +329,30 @@ public class ApiTestController extends BaseController {
             map.put("status", 0);
             map.put("user", "");
         }
+        return map;
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping(value = {"changPass"}, method = RequestMethod.GET)
+    public Map changPass(String userid, String password){
+        Map map = new HashMap();
+
+        ZUser zUser = new ZUser();
+        zUser.setId(userid);
+
+        List<ZUser> list = zUserService.findList(zUser);
+
+        if (list.size() > 0) {
+            ZUser zUser1 = list.get(0);
+            zUser1.setPassword(password);
+            zUserService.save(zUser1);
+        }
+
+
+        map.put("status", 1);
+
         return map;
     }
 

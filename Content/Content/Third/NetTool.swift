@@ -14,7 +14,7 @@ class NetTool: NSObject {
     
     
     
-    static func Get(url: String, parameters: Parameters, completionHandler: @escaping (JSON?) -> Void)  {
+    static func Get(url: String, parameters: Parameters?, completionHandler: @escaping (JSON?) -> Void)  {
         
         Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil).response { (response) in
             if response.response?.statusCode == 200 {

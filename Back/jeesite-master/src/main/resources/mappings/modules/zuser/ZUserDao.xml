@@ -27,12 +27,12 @@
 		FROM z_user a
 		<include refid="zUserJoins"/>
 		<where>
-			
+			1 = 1
 			<if test="name != null and name != ''">
-				AND a.name LIKE 
-					<if test="dbName == 'oracle'">'%'||#{name}||'%'</if>
-					<if test="dbName == 'mssql'">'%'+#{name}+'%'</if>
-					<if test="dbName == 'mysql'">concat('%',#{name},'%')</if>
+				AND a.name = #{name}
+			</if>
+			<if test="password != null and password != ''">
+				AND a.password = #{password}
 			</if>
 		</where>
 		<choose>

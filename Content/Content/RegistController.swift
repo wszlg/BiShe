@@ -69,10 +69,16 @@ class RegistController: UIViewController {
                         let tab =  UITabBarController()
                         tab.addChildViewController(nav)
                         nav.tabBarItem.title = "精彩内容"
-                        let collect = storyboard.instantiateViewController(withIdentifier: "MyCollectController")
+                        let collect = storyboard.instantiateViewController(withIdentifier: "MineController")
                         let nav1 = UINavigationController(rootViewController: collect)
                         
-                        nav1.tabBarItem.title = "我的收藏"
+                        
+                        let chat = storyboard.instantiateViewController(withIdentifier: "ChatsController")
+                        let nav2 = UINavigationController(rootViewController: chat)
+                        nav2.tabBarItem.title = "话题讨论"
+                        tab.addChildViewController(nav2)
+                        
+                        nav1.tabBarItem.title = "我的"
                         tab.addChildViewController(nav1)
                         UIApplication.shared.keyWindow?.rootViewController = tab
                         
