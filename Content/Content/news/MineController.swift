@@ -10,10 +10,14 @@ import UIKit
 
 class MineController: UIViewController {
 
+    @IBOutlet weak var nickName: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        nickName.text = DataTool.getInfo(key: "username") as! String
+        
     }
 
 
