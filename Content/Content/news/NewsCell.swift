@@ -16,6 +16,7 @@ class NewsCell: UITableViewCell {
 
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var collectCount: UILabel!
     
     
     
@@ -38,7 +39,11 @@ class NewsCell: UITableViewCell {
         
         didSet {
             title.text = model["title"].stringValue
-            
+            if let count = model["collectCount"].int {
+                collectCount.text = "\(count)收藏"
+            } else {
+                
+            }
             img.kf.setImage(with: ImageResource(downloadURL: URL(string: model["picurl"].stringValue)!))
             
         }

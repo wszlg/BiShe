@@ -39,6 +39,7 @@
 		718025B7216B54C300191826 /* TextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025B6216B54C300191826 /* TextCell.swift */; };
 		718025BB216B62C800191826 /* PicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025BA216B62C800191826 /* PicController.swift */; };
 		718025BD216B633800191826 /* PicCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 718025BC216B633800191826 /* PicCell.swift */; };
+		71AEC26C2186C7A100C4E1CB /* ChatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEC26B2186C7A100C4E1CB /* ChatModel.swift */; };
 		71F20EE6216B222200EB8E74 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F20EE5216B222200EB8E74 /* AppDelegate.swift */; };
 		71F20EE8216B222200EB8E74 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F20EE7216B222200EB8E74 /* ViewController.swift */; };
 		71F20EEB216B222200EB8E74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71F20EE9216B222200EB8E74 /* Main.storyboard */; };
@@ -84,6 +85,7 @@
 		718025B6216B54C300191826 /* TextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextCell.swift; sourceTree = "<group>"; };
 		718025BA216B62C800191826 /* PicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicController.swift; sourceTree = "<group>"; };
 		718025BC216B633800191826 /* PicCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicCell.swift; sourceTree = "<group>"; };
+		71AEC26B2186C7A100C4E1CB /* ChatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatModel.swift; sourceTree = "<group>"; };
 		71F20EE2216B222200EB8E74 /* Content.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Content.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71F20EE5216B222200EB8E74 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		71F20EE7216B222200EB8E74 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				7178A8F6217EE5BE00C3C096 /* ChatsCell.swift */,
 				7178A8F8217EED7F00C3C096 /* ChatDetailController.swift */,
 				7178A8FA217EEDA200C3C096 /* ChatDetailCell.swift */,
+				71AEC26B2186C7A100C4E1CB /* ChatModel.swift */,
 			);
 			path = news;
 			sourceTree = "<group>";
@@ -340,6 +343,8 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -351,6 +356,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -378,6 +385,7 @@
 				7178A8F7217EE5BE00C3C096 /* ChatsCell.swift in Sources */,
 				713D8F3E216F37A800C7914D /* RecommendController.swift in Sources */,
 				714CFD21216DCA5100E89B5F /* CommentCell.swift in Sources */,
+				71AEC26C2186C7A100C4E1CB /* ChatModel.swift in Sources */,
 				71F20EE8216B222200EB8E74 /* ViewController.swift in Sources */,
 				715C9EF5216C56DF00D1EC9E /* SVTool.swift in Sources */,
 				714CFD1C216DC45F00E89B5F /* NewsDetailViewController.swift in Sources */,

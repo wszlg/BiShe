@@ -13,8 +13,10 @@ class ChatsCell: UITableViewCell {
     
     
     @IBOutlet weak var content: UILabel!
+    @IBOutlet weak var chatCount: UILabel!
     
-
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

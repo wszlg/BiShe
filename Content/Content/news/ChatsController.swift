@@ -14,6 +14,8 @@ class ChatsController: UITableViewController {
     
     var datas = [JSON]()
     
+    var dataModels = [ChatModel]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,13 @@ class ChatsController: UITableViewController {
             if let js = json {
                 if js["status"].intValue == 1 {
                     self.datas = js["list"].arrayValue
+                    self.dataModels.removeAll()
+                    for var item in self.datas {
+                        let coutn = DataTool.searchValueCount(type: Comment.self, condition: "newsid == '\(item["id"].stringValue)'")
+                        self.dataModels.append(ChatModel(content: item["content"].stringValue, chatCount: coutn))
+                    }
+                    
+                    
                     self.tableView.reloadData()
                 }
             }
@@ -47,10 +56,15 @@ class ChatsController: UITableViewController {
         NetTool.Get(url: "\(BACKURL)getChats.action", parameters: nil) { (json) in
             if let js = json {
                 if js["status"].intValue == 1 {
-                    self.datas.removeAll()
                     self.datas = js["list"].arrayValue
+                    self.dataModels.removeAll()
+                    for var item in self.datas {
+                        let coutn = DataTool.searchValueCount(type: Comment.self, condition: "newsid == '\(item["id"].stringValue)'")
+                        self.dataModels.append(ChatModel(content: item["content"].stringValue, chatCount: coutn))
+                    }
+                    
+                    
                     self.tableView.reloadData()
-                    self.tableView.mj_header.endRefreshing()
                 }
             }
         }
@@ -70,7 +84,7 @@ class ChatsController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return datas.count
+        return dataModels.count
     }
 
     
@@ -78,8 +92,8 @@ class ChatsController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatsCell", for: indexPath) as! ChatsCell
 
         // Configure the cell...
-        cell.content.text = datas[indexPath.row]["content"].stringValue
-        
+        cell.content.text = dataModels[indexPath.row].content
+        cell.chatCount.text = "\(dataModels[indexPath.row].chatCount)人参与讨论"
         
 
         return cell

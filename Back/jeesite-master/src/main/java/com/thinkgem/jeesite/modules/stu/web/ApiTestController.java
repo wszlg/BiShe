@@ -230,6 +230,10 @@ public class ApiTestController extends BaseController {
                     if (list2.size() > 0) {
                         ZNews zNews1 = list2.get(0);
                         zNews1.setType("0");
+                        ZCollect zCollect2 = new ZCollect();
+                        zCollect2.setNewsId(zNews1.getId());
+                        List<ZCollect> list3 = zCollectService.findList(zCollect2);
+                        zNews1.setCollectCount(list3.size());
                         list.add(zNews1);
                     }
 
@@ -398,6 +402,10 @@ public class ApiTestController extends BaseController {
         Page<ZNews> page1 = zNewsService.findPage(p, zNews);
         for (ZNews zNews1 : page1.getList()) {
             zNews1.setType("0");
+            ZCollect zCollect = new ZCollect();
+            zCollect.setNewsId(zNews1.getId());
+            List<ZCollect> list = zCollectService.findList(zCollect);
+            zNews1.setCollectCount(list.size());
         }
         map.put("list", page1.getList());
         return map;
@@ -506,6 +514,10 @@ public class ApiTestController extends BaseController {
                 {
                     for (ZNews zNews : newsList) {
                         zNews.setType("0");
+                        ZCollect zCollect = new ZCollect();
+                        zCollect.setNewsId(zNews.getId());
+                        List<ZCollect> list1 = zCollectService.findList(zCollect);
+                        zNews.setCollectCount(list1.size());
                         list.add(zNews);
                     }
                     break;
@@ -552,6 +564,10 @@ public class ApiTestController extends BaseController {
 
             ZNews zNews = newsList.get(rand.nextInt(newsList.size()));
             zNews.setType("0");
+            ZCollect zCollect = new ZCollect();
+            zCollect.setNewsId(zNews.getId());
+            List<ZCollect> list1 = zCollectService.findList(zCollect);
+            zNews.setCollectCount(list1.size());
             list.add(zNews);
 
             ZTec zTec = zTecList.get(rand.nextInt(zTecList.size()));

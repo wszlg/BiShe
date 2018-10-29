@@ -73,6 +73,17 @@ class DataTool: NSObject {
 
     }
     
+    class func searchValueCount<Element: Object>(type: Element.Type, condition: String) -> Int{
+        do {
+            let realm = try Realm()
+            let result = realm.objects(type).filter(condition)
+            return result.count
+        } catch let error as NSError {
+            print(error)
+        }
+        return 0
+    }
+    
 
 }
 

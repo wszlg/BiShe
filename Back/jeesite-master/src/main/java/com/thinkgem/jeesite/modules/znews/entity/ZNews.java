@@ -18,6 +18,15 @@ public class ZNews extends DataEntity<ZNews> {
 	private String title;		// 新闻标题
 	private String picurl;		// 图片地址
 	private String content;		// 新闻详情
+	private int collectCount; // 收藏的个数
+
+	public int getCollectCount() {
+		return collectCount;
+	}
+
+	public void setCollectCount(int collectCount) {
+		this.collectCount = collectCount;
+	}
 
 	private String type;
 

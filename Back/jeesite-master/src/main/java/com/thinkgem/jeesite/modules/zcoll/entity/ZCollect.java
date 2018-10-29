@@ -18,7 +18,16 @@ public class ZCollect extends DataEntity<ZCollect> {
 	private String userid;		// 用户id
 	private String type;		// 类型
 	private String newsId;		// 新闻id
-	
+	private int collectCount; // 收藏的个数
+
+	public int getCollectCount() {
+		return collectCount;
+	}
+
+	public void setCollectCount(int collectCount) {
+		this.collectCount = collectCount;
+	}
+
 	public ZCollect() {
 		super();
 	}

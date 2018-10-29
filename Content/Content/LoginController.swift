@@ -62,15 +62,18 @@ class LoginController: UIViewController {
                     let tab =  UITabBarController()
                     tab.addChildViewController(nav)
                     nav.tabBarItem.title = "精彩内容"
+                    nav.tabBarItem.image = UIImage(named: "_内容2")
                     let collect = storyboard.instantiateViewController(withIdentifier: "MineController")
                     let nav1 = UINavigationController(rootViewController: collect)
                     
                     let chat = storyboard.instantiateViewController(withIdentifier: "ChatsController")
                     let nav2 = UINavigationController(rootViewController: chat)
                     nav2.tabBarItem.title = "话题讨论"
+                    nav2.tabBarItem.image = UIImage(named: "话题-1")
                     tab.addChildViewController(nav2)
                     
                     nav1.tabBarItem.title = "我的"
+                    nav1.tabBarItem.image = UIImage(named: "我的")
                     tab.addChildViewController(nav1)
                     UIApplication.shared.keyWindow?.rootViewController = tab
 
